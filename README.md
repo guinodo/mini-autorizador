@@ -1,3 +1,12 @@
+# Iniciando a aplicação
+```bash
+docker-compose -f docker/docker-compose.yml up
+```
+
+# Documentação Swagger da API
+http://localhost:8080/swagger-ui/index.html#/
+
+
 #Teste de programação - VR Benefícios
 
 Como parte do processo de seleção, gostaríamos que você desenvolvesse um pequeno sistema, para que possamos ver melhor o seu trabalho.

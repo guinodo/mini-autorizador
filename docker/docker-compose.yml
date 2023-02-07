@@ -1,11 +1,27 @@
 version: "3.7"
 
 services:
+  app:
+    image: 'mini-autorizador:latest'
+    build: ../.
+#      context: .
+#      dockerfile: ../Dockerfile
+    container_name: mini-autorizador
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    environment:
+      DB_HOST: mongo
+      DB_PORT: 27017
+      DB_USERNAME: user
+      DB_PASSWORD: password
+    networks:
+      - app-network
 
   mongo:
     image: mongo:4.2
     hostname: mongo
-    container_name: mongo
     ports:
       - 27017:27017
     environment:
@@ -14,15 +30,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - ./scripts/init.js:/docker-entrypoint-initdb.d/init.js:ro
+    networks:
+      - app-network
 
-#  mysql:
-#    image: mysql:5.7
-#    hostname: mysql
-#    container_name: mysql
-#    restart: always
-#    ports:
-#      - "3306:3306"
-#    environment:
-#      MYSQL_DATABASE: miniautorizador
-#      MYSQL_ROOT_PASSWORD:
-#      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+networks:
+  app-network:
+    name: app-network

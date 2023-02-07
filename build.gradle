@@ -45,8 +45,6 @@ dependencies {
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
 
-    //    implementation('org.flywaydb:flyway-core')
-
     // Tests
     implementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
